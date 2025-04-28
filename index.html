@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kings Tiers | 1.9+</title>
+    <title>Kings Tiers</title>
     <link rel="icon" type="image/x-icon" href="kingstiers.png">
     <style>
         body {
@@ -14,7 +14,9 @@
             background-color: dimgray;
             gap: 20px;
             flex-direction: column;
+            margin: 0;
         }
+
         .header {
             display: flex;
             align-items: center;
@@ -27,15 +29,17 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .header img {
             width: 40px;
             height: 40px;
             background-color: inherit;
             border-radius: 10px;
         }
+
         .box {
             width: 600px;
-            height: 400px;
+            height: 100px;
             background-color: white;
             border-radius: 15px;
             display: flex;
@@ -51,7 +55,15 @@
             text-align: center;
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: width 0.3s, height 0.3s, position 0.3s, top 0.3s, left 0.3s, z-index 0.3s;
         }
+
+        #button1 .card:hover {
+            border-color: #fff;
+            box-shadow: none;
+        }
+
         .image-container {
             width: 80px;
             height: 80px;
@@ -62,11 +74,13 @@
             border-radius: 10px;
             margin-right: 10px;
         }
+
         .image-container img {
             width: 61px;
             height: 61px;
             object-fit: cover;
         }
+
         .box:hover::before, .box:hover::after {
             content: "";
             position: absolute;
@@ -74,21 +88,36 @@
             height: 100%;
             animation: moveLines 0.01s linear;
         }
+
         .box:hover::before {
             left: 10px;
         }
+
         .box:hover::after {
             left: 20px;
         }
+
         @keyframes moveLines {
-            from { top: -100%; }
-            to { top: 100%; }
+            from {
+                top: -100%;
+            }
+            to {
+                top: 100%;
+            }
         }
-        .box:nth-of-type(2):hover::before, .box:nth-of-type(2):hover::after { background-color: gold; }
-        .box:nth-of-type(3):hover::before, .box:nth-of-type(3):hover::after { background-color: silver; }
-        .box:nth-of-type(4):hover::before, .box:nth-of-type(4):hover::after { background-color: #CD7F32; }
-    </style>
-<style>
+
+        .box:nth-of-type(2):hover::before, .box:nth-of-type(2):hover::after {
+            background-color: gold;
+        }
+
+        .box:nth-of-type(3):hover::before, .box:nth-of-type(3):hover::after {
+            background-color: silver;
+        }
+
+        .box:nth-of-type(4):hover::before, .box:nth-of-type(4):hover::after {
+            background-color: #CD7F32;
+        }
+
         .nav {
             position: absolute;
             top: 10px;
@@ -98,6 +127,7 @@
             font-family: Arial, sans-serif;
             font-size: 18px;
         }
+
         .nav a {
             text-decoration: none;
             color: #333;
@@ -107,131 +137,209 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
         }
+
         .nav a:hover {
             background-color: #ddd;
         }
+
+        .expanded-box {
+            position: fixed !important;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw !important;
+            height: 50vh !important;
+            z-index: 10;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+        }
+
+        .expanded-box > * {
+            display: block !important;
+        }
+
+        .expanded-box::before,
+        .expanded-box::after {
+            display: none !important;
+        }
+
+        .editable-content {
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            resize: none;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 5px;
+            line-height: 1;
+            z-index: 11;
+        }
+
+        .custom-button {
+            padding: 5px;
+            border-radius: 5px;
+            background-color: gold;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            white-space: nowrap;
+            gap: 5px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .custom-button:hover {
+            opacity: 0.8;
+        }
+
+        .button-image {
+            width: 21px;
+            height: 21px;
+            border-radius: 5px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .button-text{
+          margin-left: 25px;
+        }
+        .nav a img{
+    width: 26px;
+    height: 26px;
+}
+
     </style>
 </head>
+<h1>King Tiers</h1>
 <body>
     <div class="nav">
-        <a href="#">Crystal</a>
-        <a href="#"></a>
+        <a href="kingtiers.online/"><img src="vanilla.svg" alt="Crystal">Crystal</a>
+        <a href="kingtiers.online/rivals"><img src="rivals.png" alt="Rivals">Rivals</a>
         <a href="#"></a>
     </div>
-    <div class="box">
+    <div class="box" onclick="expandBox(this, 'Crystal Tier', [{ imageSrc: 'tier_1.svg', text: 'HT1', color: 'gold', borderRadius: '5px' }])">
         <div class="image-container"><img src="2xyza.png" alt="NA | 2xyza"></div>
-        <p>2xyza  ></p>
-        <div>
-            <style>
-        .button1 {
-            background-color: yellow;
-        }
-            .button {
-                background-color: rgb(255, 255, 0);
-                border: none;
-                color: rgb(255, 251, 0);
-                padding: 10px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-              }
-              .button1 {
-                border-radius: 8px;
-            }
-            </style>
-         <button class="button1"><img src="tier_1.svg" width="16" height="16" alt="tier_1">HT1 </button>
-        </div>
+        <p>2xyza ></p>
     </div>
-    <div class="box">
+    <div class="box" onclick="expandBox(this, 'Crystal Tier', [{ imageSrc: 'tier_3.svg', text: 'HT3', color: '#CD7F50', borderRadius: '5px' }])">
         <div class="image-container"><img src="kingcanvasv.png" alt="KingCanvasV"></div>
         <p>NA | KingCanvasV ></p>
-        <div>
-            <style>
-                .button2 {
-            background-color: #CD7F32;
-        }
-            .button {
-                background-color: rgb(255, 255, 0);
-                border: none;
-                color: rgb(255, 251, 0);
-                padding: 10px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-              }
-              .button2 {border-radius: 8px;}
-            </style>
-         <button class="button2"><img src="tier_3.svg" width="16" height="16" alt="tier_1">HT3</button>
-        </div>
     </div>
-    <div class="box">
+    <div class="box" onclick="expandBox(this, 'Text bot 3', [{ imageSrc: 'tier_3.svg', text: 'HT3', color: '#CD7F50', borderRadius: '5px' }])">
         <div class="image-container"><img src="IW0NY0UL0ST.png" alt="IW0NY0UL0ST"></div>
         <p>IW0NY0UL0ST ></p>
-        <div>
-            <style>
-            .button3 {
-                background-color: #CD7F32;
+    </div>
+    <div class="box" onclick="expandBox(this, 'Crystal Tier', [{ imageSrc: '', text: 'LT4', color: 'gray', borderRadius: '5px' }])">
+        <div class="image-container"><img src="skyispieyie.png" alt="SkyisPieYie"></div>
+        <p>NA | SkyisPieYie ></p>
+    </div>
+    <div class="box" onclick="expandBox(this, 'Text bot 5', [{ imageSrc: '', text: 'HT', color: 'gray', borderRadius: '5px' }])">
+        <div class="image-container"><img src="qJapan.png" alt="qJapan"></div>
+        <p>qJapan ></p>
+    </div>
+    <script>
+        let expandedBox = null;
+
+        function expandBox(box, text, buttons) {
+            if (expandedBox) {
+                shrinkBox(expandedBox);
             }
-            .button {
-                background-color: rgb(255, 255, 0);
-                border: none;
-                color: rgb(255, 251, 0);
-                padding: 10px;
-                text-align: right;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-              }
-              .button3 {border-radius: 8px;}
-            </style>
-         <button class="button3"><img src="tier_3.svg" width="16" height="16" alt="tier_1">HT3</button>
-        </div>
-    </div>
-<div class="box">
-    <div class="image-container"><img src="skyispieyie.png" alt="SkyisPieYie"></div>
-    <p>NA | SkyisPieYie ></p><div>
-        <style>
-        .button {
-            background-color: rgb(255, 255, 0);
-            border: none;
-            color: rgb(255, 251, 0);
-            padding: 10px;
-            text-align: right;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-          }
-          .button4 {border-radius: 8px;}
-        </style>
-     <button class="button4">LT4</button>
-    </div>
-</div>
-<div class="box">
-    <div class="image-container"><img src="qJapan.png" alt="qJapan"></div>
-    <p>qJapan ></p>
-    <div>
-        <style>
-        .button {
-            background-color: rgb(255, 255, 0);
-            border: none;
-            color: rgb(255, 251, 0);
-            padding: 10px;
-            text-align: right;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-          }
-          .button5 {border-radius: 8px;}
-        </style>
-     <button class="button5">HT5</button>
-    </div>
-</div>
+
+            expandedBox = box;
+            box.classList.add('expanded-box');
+            box.originalContent = box.innerHTML;
+
+            let editableContent = document.createElement('div');
+            editableContent.classList.add('editable-content');
+            editableContent.setAttribute('contenteditable', 'true');
+            editableContent.style.whiteSpace = 'pre-wrap';
+            editableContent.style.overflowWrap = 'break-word';
+            editableContent.style.wordBreak = 'break-all';
+            editableContent.textContent = text;
+
+            buttons.forEach(buttonData => {
+                let button = document.createElement('button');
+                button.classList.add('custom-button');
+                button.style.backgroundColor = buttonData.color;
+                button.style.borderRadius = buttonData.borderRadius;
+
+                if (buttonData.imageSrc) {
+                    let img = document.createElement('img');
+                    img.src = buttonData.imageSrc;
+                    img.classList.add('button-image');
+                    let imageLoadTimeout = setTimeout(() => {
+                        console.error('Image load timeout:', buttonData.imageSrc);
+                    }, 5000);
+
+                    img.onload = () => {
+                        console.log('Image loaded successfully:', buttonData.imageSrc);
+                        clearTimeout(imageLoadTimeout);
+                    };
+                    img.onerror = (error) => {
+                        console.error('Error loading image:', buttonData.imageSrc, error);
+                        clearTimeout(imageLoadTimeout);
+                    };
+                    button.appendChild(img);
+
+                    if (!button.contains(img)) {
+                        console.error('Image was not appended to button:', buttonData.imageSrc);
+                    }
+                }
+                if (buttonData.text) {
+                    let textSpan = document.createElement('span');
+                    textSpan.classList.add('button-text');
+                    textSpan.textContent = buttonData.text;
+                    button.appendChild(textSpan);
+                }
+                editableContent.appendChild(button);
+            });
+
+            box.appendChild(editableContent);
+
+            let closeButton = document.createElement('div');
+            closeButton.classList.add('close-button');
+            closeButton.innerHTML = 'X';
+            closeButton.onclick = function (event) {
+                event.stopPropagation();
+                shrinkBox(box);
+            };
+            box.appendChild(closeButton);
+        }
+
+        function shrinkBox(box) {
+            box.classList.remove('expanded-box');
+            box.innerHTML = box.originalContent;
+            expandedBox = null;
+        }
+    </script>
 </body>
 </html>
