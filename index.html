@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: dimgray;
             gap: 20px;
             flex-direction: column;
@@ -22,26 +22,28 @@
             align-items: center;
             gap: 10px;
             font-family: Arial, sans-serif;
-            font-size: 24px;
+            font-size: 2vw;
             font-weight: bold;
             background-color: white;
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1vw;
+            border-radius: 3vw;
+            box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
         }
 
         .header img {
-            width: 40px;
-            height: 40px;
+            width: 5vw;
+            height: 5vw;
             background-color: inherit;
-            border-radius: 10px;
+            border-radius: 1.25vw;
         }
 
         .box {
-            width: 600px;
-            height: 100px;
+            width: 80vw;
+            max-width: 600px;
+            height: 15vw;
+            max-height: 100px;
             background-color: white;
-            border-radius: 15px;
+            border-radius: 2vw;
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
@@ -50,11 +52,11 @@
             overflow: hidden;
             font-family: Arial, sans-serif;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 2.5vw;
             color: #333;
             text-align: center;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5vw;
+            box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: width 0.3s, height 0.3s, position 0.3s, top 0.3s, left 0.3s, z-index 0.3s;
         }
@@ -65,36 +67,40 @@
         }
 
         .image-container {
-            width: 80px;
-            height: 80px;
+            width: 10vw;
+            height: 10vw;
+            max-width: 80px;
+            max-height: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            border-radius: 10px;
-            margin-right: 10px;
+            border-radius: 1.25vw;
+            margin-right: 1.25vw;
         }
 
         .image-container img {
-            width: 61px;
-            height: 61px;
+            width: 7.625vw;
+            height: 7.625vw;
+            max-width: 61px;
+            max-height: 61px;
             object-fit: cover;
         }
 
         .box:hover::before, .box:hover::after {
             content: "";
             position: absolute;
-            width: 3px;
+            width: 0.4vw;
             height: 100%;
             animation: moveLines 0.01s linear;
         }
 
         .box:hover::before {
-            left: 10px;
+            left: 1.25vw;
         }
 
         .box:hover::after {
-            left: 20px;
+            left: 2.5vw;
         }
 
         @keyframes moveLines {
@@ -120,21 +126,21 @@
 
         .nav {
             position: absolute;
-            top: 10px;
-            right: 20px;
+            top: 1.5vw;
+            right: 2.5vw;
             display: flex;
-            gap: 15px;
+            gap: 2vw;
             font-family: Arial, sans-serif;
-            font-size: 18px;
+            font-size: 2.25vw;
         }
 
         .nav a {
             text-decoration: none;
             color: #333;
-            padding: 5px 10px;
+            padding: 0.625vw 1.25vw;
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 1.25vw;
+            box-shadow: 0 0.25vw 0.625vw rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
         }
 
@@ -147,13 +153,16 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50vw !important;
-            height: 50vh !important;
+            width: 80vw !important;
+            max-width: 500px !important;
+            height: 70vh !important;
+            max-height: 600px !important;
             z-index: 10;
             display: flex !important;
             flex-direction: column !important;
             justify-content: flex-start !important;
             align-items: flex-start !important;
+            padding: 2vw;
         }
 
         .expanded-box > * {
@@ -166,15 +175,15 @@
         }
 
         .editable-content {
-            width: 80%;
-            height: 80%;
+            width: 100%;
+            height: 100%;
             background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 0.125vw solid #ccc;
+            border-radius: 1vw;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 1.25vw;
             font-family: Arial, sans-serif;
-            font-size: 16px;
+            font-size: 2vw;
             white-space: pre-wrap;
             overflow-wrap: break-word;
             word-break: break-all;
@@ -183,35 +192,36 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            overflow-y: auto;
         }
 
         .close-button {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
+            top: 1vw;
+            right: 1vw;
+            font-size: 2.5vw;
             color: red;
             cursor: pointer;
             font-weight: bold;
-            padding: 5px;
+            padding: 0.625vw;
             line-height: 1;
             z-index: 11;
         }
 
         .custom-button {
-            padding: 5px;
-            border-radius: 5px;
+            padding: 0.625vw;
+            border-radius: 0.625vw;
             background-color: gold;
             color: white;
-            font-size: 16px;
+            font-size: 2vw;
             cursor: pointer;
             border: none;
-            margin: 5px;
+            margin: 0.625vw;
             display: flex;
             flex-direction: column;
             align-items: center;
             white-space: nowrap;
-            gap: 5px;
+            gap: 0.625vw;
             position: relative;
             overflow: visible;
         }
@@ -221,22 +231,117 @@
         }
 
         .button-image {
-            width: 21px;
-            height: 21px;
-            border-radius: 5px;
+            width: 2.625vw;
+            height: 2.625vw;
+            border-radius: 0.625vw;
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
         }
         .button-text{
-          margin-left: 25px;
+            margin-left: 3.125vw;
         }
         .nav a img{
-    width: 26px;
-    height: 26px;
-}
+            width: 3.25vw;
+            height: 3.25vw;
+        }
 
+        h1 {
+            font-size: 3vw;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            margin-bottom: 1vw;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                font-size: 3vw;
+                padding: 2vw;
+                border-radius: 5vw;
+            }
+            .header img {
+                width: 7vw;
+                height: 7vw;
+                border-radius: 2vw;
+            }
+            .box {
+                font-size: 3.5vw;
+                padding: 2vw;
+                border-radius: 3vw;
+                height: auto;
+                min-height: 15vw;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .image-container {
+                width: 15vw;
+                height: 15vw;
+                border-radius: 2vw;
+                margin-right: 0;
+                margin-bottom: 1vw;
+            }
+            .image-container img {
+                width: 100%;
+                height: 100%;
+            }
+            .nav {
+                font-size: 3.5vw;
+                top: auto;
+                bottom: 1vw;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                gap: 3vw;
+            }
+            .nav a {
+                padding: 1.5vw 3vw;
+                border-radius: 2vw;
+            }
+            .nav a img {
+                width: 4vw;
+                height: 4vw;
+            }
+            .expanded-box {
+                width: 90vw !important;
+                height: 80vh !important;
+                padding: 3vw;
+            }
+            .editable-content {
+                font-size: 3vw;
+                padding: 2vw;
+                border-radius: 1.5vw;
+            }
+            .close-button {
+                font-size: 4vw;
+                top: 1.5vw;
+                right: 1.5vw;
+            }
+            .custom-button {
+                font-size: 3vw;
+                padding: 1vw;
+                border-radius: 1vw;
+                margin: 1vw;
+                flex-direction: row;
+                align-items: center;
+                gap: 1vw;
+            }
+            .button-image {
+                width: 4vw;
+                height: 4vw;
+                position: static;
+                margin-right: 1vw;
+            }
+            .button-text {
+                margin-left: 0;
+            }
+            h1 {
+                font-size: 4vw;
+                margin-bottom: 2vw;
+            }
+        }
     </style>
 </head>
 <h1>King Tiers</h1>
@@ -277,6 +382,7 @@
             expandedBox = box;
             box.classList.add('expanded-box');
             box.originalContent = box.innerHTML;
+            box.style.overflow = 'auto';
 
             let editableContent = document.createElement('div');
             editableContent.classList.add('editable-content');
@@ -339,6 +445,7 @@
             box.classList.remove('expanded-box');
             box.innerHTML = box.originalContent;
             expandedBox = null;
+            box.style.overflow = 'hidden';
         }
     </script>
 </body>
